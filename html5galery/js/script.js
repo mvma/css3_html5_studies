@@ -20,8 +20,8 @@ $(document).ready(function () {
     });
 
     create('All Items', itemsByTags);
-    
-    $.each(itemsByTags, function(menu, li) {
+
+    $.each(itemsByTags, function (menu, li) {
         create(menu, li);
     });
 
@@ -32,9 +32,9 @@ $(document).ready(function () {
 
         let siblings = link.siblings();
         siblings.removeClass('active');
-        
+
         $('#gallery').quicksand(link.data('list').find('li'));
-        
+
         e.preventDefault();
     });
 
@@ -44,20 +44,22 @@ $(document).ready(function () {
         let ul = $('<ul>', {
             'class': 'hidden'
         });
-        
-        $.each(liCollection, function() {
+
+        $.each(liCollection, function () {
             let collection = $(this);
-            $.each(collection, function(index, e){
+            $.each(collection, function (index, e) {
                 $(e).clone().appendTo(ul);
             });
         });
 
         ul.appendTo('#gallery');
-        
+
         let a = $('<a>', {
-            href:'#',
+            href: '#',
             html: menu,
-            data:{list:ul}
+            data: {
+                list: ul
+            }
         }).appendTo('#navbar');
     }
 });
